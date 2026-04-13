@@ -1,0 +1,44 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+ <p id="resultado">10</p>
+
+  <button id="iniciar">Iniciar</button>
+  <button id="parar">Parar</button>
+
+  <script>
+    let cuenta = 10
+    let intervalo = null
+
+    const resultado = document.getElementById("resultado")
+    const btnIniciar = document.getElementById("iniciar")
+    const btnParar = document.getElementById("parar")
+
+    function iniciar() {
+      clearInterval(intervalo)
+
+      intervalo = setInterval(function() {
+        cuenta = cuenta - 1
+        resultado.innerHTML = cuenta
+
+        if (cuenta === 0) {
+          clearInterval(intervalo)
+          resultado.innerHTML = "¡Tiempo!"
+        }
+      }, 1000)
+    }
+
+    function parar() {
+      clearInterval(intervalo)
+    }
+
+    btnIniciar.addEventListener("click", iniciar)
+    btnParar.addEventListener("click", parar)
+  </script>
+
+</body>
+</html>
