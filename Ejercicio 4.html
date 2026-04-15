@@ -1,0 +1,63 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+  <style>
+    #contenedor {
+      width: 300px;
+      border: 1px solid black;
+    }
+
+    #barra {
+      width: 0%;
+      height: 20px;
+      background-color: green;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="contenedor">
+    <div id="barra"></div>
+  </div>
+
+  <br>
+
+  <button id="btn">Iniciar</button>
+  <p id="resultado"></p>
+
+  <script>
+    let progreso = 0
+    let intervalo = null
+
+    const barra = document.getElementById("barra")
+    const boton = document.getElementById("btn")
+    const resultado = document.getElementById("resultado")
+
+    function iniciar() {
+      progreso = 0
+      barra.style.width = "0%"
+      resultado.innerHTML = ""
+
+      clearInterval(intervalo)
+
+      intervalo = setInterval(function() {
+        progreso = progreso + 1
+        barra.style.width = progreso + "%"
+
+        if (progreso >= 100) {
+          clearInterval(intervalo)
+          resultado.innerHTML = "¡Completado!"
+        }
+
+      }, 100)
+    }
+
+    boton.addEventListener("click", iniciar)
+  </script>
+
+</body>
+</html>

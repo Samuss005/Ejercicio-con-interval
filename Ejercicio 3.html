@@ -1,0 +1,46 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+
+  <p id="texto">Este texto parpadea</p>
+
+  <button id="iniciar">Iniciar</button>
+  <button id="detener">Detener</button>
+
+  <script>
+    let visible = true
+    let intervalo = null
+
+    const parrafo = document.getElementById("texto")
+    const btnIniciar = document.getElementById("iniciar")
+    const btnDetener = document.getElementById("detener")
+
+    function iniciar() {
+      clearInterval(intervalo)
+
+      intervalo = setInterval(function() {
+        visible = !visible
+
+        if (visible) {
+          parrafo.style.visibility = "visible"
+        } else {
+          parrafo.style.visibility = "hidden"
+        }
+
+      }, 500)
+    }
+
+    function detener() {
+      clearInterval(intervalo)
+    }
+
+    btnIniciar.addEventListener("click", iniciar)
+    btnDetener.addEventListener("click", detener)
+  </script>
+
+</body>
+</html>
